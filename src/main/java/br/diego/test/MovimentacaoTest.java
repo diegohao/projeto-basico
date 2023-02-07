@@ -21,8 +21,8 @@ public class MovimentacaoTest extends BaseTeste {
 	@Test
 	public void testInserirMovimentacao() {
 		menuPage.acessarTelaInserirMovimentacao();
-		movPage.setDataMovimentacao("26/09/2022");
-		movPage.setDataPagamento("27/09/2022");
+		movPage.setDataMovimentacao(DataUtils.obterDataFormatada(new Date()));
+		movPage.setDataPagamento(DataUtils.obterDataFormatada(new Date()));
 		movPage.setDescricao("Movimentação de teste");
 		movPage.setInteressado("Henrique");
 		movPage.setValor("500");
