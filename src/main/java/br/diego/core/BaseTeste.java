@@ -11,14 +11,6 @@ public class BaseTeste {
 	
 	private LoginPage page = new LoginPage();
 	
-	@Before
-	public void inicializa() {
-		page.acessarTelaInicial();
-		page.setEmail("di@test.com");
-		page.setSenha("123456");
-		page.entrar();
-	}
-	
 	@After
 	public void finaliza() {
 		if(Propriedades.FECHAR_BROWNSER) {
