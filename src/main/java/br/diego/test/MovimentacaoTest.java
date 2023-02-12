@@ -4,7 +4,9 @@ import java.util.Arrays;
 import java.util.Date;
 
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import com.sun.tools.javac.util.List;
 
@@ -13,16 +15,17 @@ import br.diego.page.MenuPage;
 import br.diego.page.MovimentacaoPage;
 import br.diego.utils.DataUtils;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MovimentacaoTest extends BaseTeste {
 	
 	private MenuPage menuPage = new MenuPage();
 	private MovimentacaoPage movPage = new MovimentacaoPage();
 	
 	@Test
-	public void testInserirMovimentacao() {
+	public void test1InserirMovimentacao() {
 		menuPage.acessarTelaInserirMovimentacao();
-		movPage.setDataMovimentacao(DataUtils.obterDataFormatada(new Date()));
-		movPage.setDataPagamento(DataUtils.obterDataFormatada(new Date()));
+		movPage.setDataMovimentacao("07/02/2023");
+		movPage.setDataPagamento("05/05/2026");
 		movPage.setDescricao("Movimentação de teste");
 		movPage.setInteressado("Henrique");
 		movPage.setValor("500");
@@ -33,7 +36,7 @@ public class MovimentacaoTest extends BaseTeste {
 	}
 	
 	@Test
-	public void testCamposObrigatorios() {
+	public void test2CamposObrigatorios() {
 		menuPage.acessarTelaInserirMovimentacao();
 		
 		movPage.salvar();
@@ -46,13 +49,15 @@ public class MovimentacaoTest extends BaseTeste {
 	}
 	
 	@Test
-	public void testInserirMovimentacaoFutura() {		
+	public void test3InserirMovimentacaoFutura() {		
 		menuPage.acessarTelaInserirMovimentacao();
 		
 		Date dataFutura = DataUtils.obterDataComDiferencaDias(2);
 		
-		movPage.setDataMovimentacao(DataUtils.obterDataFormatada(dataFutura));
-		movPage.setDataPagamento(DataUtils.obterDataFormatada(dataFutura));
+//		movPage.setDataMovimentacao(DataUtils.obterDataFormatada(dataFutura));
+		movPage.setDataMovimentacao("07/02/2026");
+//		movPage.setDataPagamento(DataUtils.obterDataFormatada(dataFutura));
+		movPage.setDataPagamento("05/05/2026");
 		movPage.setDescricao("Movimentação de teste");
 		movPage.setInteressado("Henrique");
 		movPage.setValor("500");

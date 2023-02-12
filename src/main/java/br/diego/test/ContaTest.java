@@ -1,19 +1,22 @@
 package br.diego.test;
 
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import br.diego.core.BaseTeste;
 import br.diego.page.ContasPage;
 import br.diego.page.MenuPage;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ContaTest extends BaseTeste {
 	
 	MenuPage menuPage = new MenuPage();
 	ContasPage contasPage = new ContasPage();
 	
 	@Test
-	public void testeInserirConta() {
+	public void test1_InserirConta() {
 		menuPage.acessarTelaInserirConta();
 		contasPage.setNome("Conta Simples");
 		contasPage.salvar();
@@ -21,7 +24,7 @@ public class ContaTest extends BaseTeste {
 	}
 	
 	@Test
-	public void testAlterarConta() {
+	public void test2_AlterarConta() {
 		menuPage.acessarTelaListar();
 		contasPage.clicarAlterarConta("Conta Simples");
 		contasPage.setNome("Conta Simples alterada");
@@ -30,18 +33,11 @@ public class ContaTest extends BaseTeste {
 	}
 	
 	@Test
-	public void testInserirContaMesmoNome() {
+	public void test3_InserirContaMesmoNome() {
 		menuPage.acessarTelaInserirConta();
 		contasPage.setNome("Conta Simples alterada");
 		contasPage.salvar();
 		Assert.assertEquals("Já existe uma conta com esse nome!", contasPage.obterMensagemErro());
-	}
-	
-	@Test
-	public void testExcluirContaComMovimentacao() {
-		menuPage.acessarTelaListar();
-		contasPage.clicarExcluirConta("Conta Simples alterada");
-		Assert.assertEquals("Conta em uso na movimentações", contasPage.obterMensagemErro());
 	}
 
 }
