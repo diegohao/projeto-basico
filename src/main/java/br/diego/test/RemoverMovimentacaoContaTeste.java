@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import br.diego.core.BaseTeste;
-import br.diego.core.Propriedades;
 import br.diego.page.ContasPage;
 import br.diego.page.MenuPage;
 
@@ -16,7 +15,7 @@ public class RemoverMovimentacaoContaTeste extends BaseTeste {
 	@Test
 	public void testExcluirContaComMovimentacao() {
 		menuPage.acessarTelaListar();
-		contasPage.clicarExcluirConta(Propriedades.NOME_CONTA_ALTERADA);
+		contasPage.clicarExcluirConta("Conta com movimentacao");
 		Assert.assertEquals("Conta em uso na movimentações", contasPage.obterMensagemErro());
 	}	
 	

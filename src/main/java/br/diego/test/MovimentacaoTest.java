@@ -11,7 +11,6 @@ import org.junit.runners.MethodSorters;
 import com.sun.tools.javac.util.List;
 
 import br.diego.core.BaseTeste;
-import br.diego.core.Propriedades;
 import br.diego.page.MenuPage;
 import br.diego.page.MovimentacaoPage;
 import br.diego.utils.DataUtils;
@@ -30,7 +29,7 @@ public class MovimentacaoTest extends BaseTeste {
 		movPage.setDescricao("Movimentação de teste");
 		movPage.setInteressado("Henrique");
 		movPage.setValor("500");
-		movPage.setConta(Propriedades.NOME_CONTA_ALTERADA);
+		movPage.setConta("Conta para movimentacoes");
 		movPage.setStatusPago();
 		movPage.salvar();
 		Assert.assertEquals("Movimentação adicionada com sucesso!", movPage.obterMensagemSucesso());
@@ -62,7 +61,7 @@ public class MovimentacaoTest extends BaseTeste {
 		movPage.setDescricao("Movimentação de teste");
 		movPage.setInteressado("Henrique");
 		movPage.setValor("500");
-		movPage.setConta(Propriedades.NOME_CONTA_ALTERADA);
+		movPage.setConta("Conta para movimentacoes");
 		movPage.setStatusPago();
 		movPage.salvar();
 		java.util.List<String> erros = movPage.obterErros();

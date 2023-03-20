@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.diego.core.BaseTeste;
-import br.diego.core.Propriedades;
 import br.diego.page.ContasPage;
 import br.diego.page.MenuPage;
 
@@ -27,8 +26,8 @@ public class ContaTest extends BaseTeste {
 	@Test
 	public void test2_AlterarConta() {
 		menuPage.acessarTelaListar();
-		contasPage.clicarAlterarConta("Conta Simples");
-		contasPage.setNome(Propriedades.NOME_CONTA_ALTERADA);
+		contasPage.clicarAlterarConta("Conta para alterar");
+		contasPage.setNome("Conta alterada");
 		contasPage.salvar();
 		Assert.assertEquals("Conta alterada com sucesso!", contasPage.obterMensagemSucesso());
 	}
@@ -36,7 +35,7 @@ public class ContaTest extends BaseTeste {
 	@Test
 	public void test3_InserirContaMesmoNome() {
 		menuPage.acessarTelaInserirConta();
-		contasPage.setNome(Propriedades.NOME_CONTA_ALTERADA);
+		contasPage.setNome("Conta mesmo nome");
 		contasPage.salvar();
 		Assert.assertEquals("Já existe uma conta com esse nome!", contasPage.obterMensagemErro());
 	}
